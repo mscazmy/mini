@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Health Journals - APC & Impact Factors</title>
+    <title>Public Health Journals - APC, Impact Factors & Rankings</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             background: white;
             border-radius: 8px;
@@ -48,7 +48,7 @@
         
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             padding: 1.5rem 2rem;
             background: #f8f9fa;
@@ -81,23 +81,25 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            min-width: 1000px;
         }
         
         th {
             background: #f8f9fa;
             color: #495057;
             font-weight: 600;
-            padding: 1rem 0.75rem;
+            padding: 1rem 0.6rem;
             text-align: left;
             border-bottom: 2px solid #dee2e6;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
         
         td {
-            padding: 1rem 0.75rem;
+            padding: 1rem 0.6rem;
             border-bottom: 1px solid #e9ecef;
             vertical-align: middle;
         }
@@ -105,6 +107,10 @@
         tr:hover {
             background-color: #f8f9fa;
             transition: background-color 0.2s ease;
+        }
+        
+        .journal-title {
+            min-width: 250px;
         }
         
         .journal-title a {
@@ -118,13 +124,48 @@
             text-decoration: underline;
         }
         
-        .impact-factor {
+        .impact-factor, .cite-score {
             font-weight: 600;
             color: #28a745;
+            text-align: center;
+        }
+        
+        .quartile {
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .quartile.q1 {
+            color: #28a745;
+            background: #d4edda;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+        
+        .quartile.q2 {
+            color: #856404;
+            background: #fff3cd;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+        
+        .quartile.q3 {
+            color: #e65100;
+            background: #ffe0b2;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+        
+        .quartile.q4 {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
         }
         
         .apc {
             font-weight: 600;
+            text-align: center;
         }
         
         .apc.free {
@@ -141,6 +182,7 @@
             font-size: 0.8rem;
             font-weight: 500;
             text-align: center;
+            white-space: nowrap;
         }
         
         .access-type.full-oa {
@@ -151,6 +193,11 @@
         .access-type.hybrid {
             background: #fff3cd;
             color: #856404;
+        }
+        
+        .publisher {
+            font-size: 0.85rem;
+            color: #6c757d;
         }
         
         .footer {
@@ -182,6 +229,13 @@
             margin-bottom: 0.25rem;
         }
         
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding: 1rem 0.5rem;
@@ -205,7 +259,11 @@
             }
             
             th, td {
-                padding: 0.75rem 0.5rem;
+                padding: 0.75rem 0.4rem;
+            }
+            
+            table {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -214,7 +272,7 @@
     <div class="container">
         <div class="header">
             <h1>Public Health Journals</h1>
-            <p>Impact Factors & Article Processing Charges (APC) - 2024</p>
+            <p>Impact Factors, Cite Scores, Rankings & Article Processing Charges (APC) - 2024</p>
         </div>
         
         <div class="stats">
@@ -227,20 +285,33 @@
                 <span class="stat-label">Avg Impact Factor</span>
             </div>
             <div class="stat-item">
+                <span class="stat-value">8.7</span>
+                <span class="stat-label">Avg Cite Score</span>
+            </div>
+            <div class="stat-item">
                 <span class="stat-value">$3,508</span>
                 <span class="stat-label">Avg APC (Paid)</span>
             </div>
             <div class="stat-item">
-                <span class="stat-value">1</span>
-                <span class="stat-label">Free to Publish</span>
+                <span class="stat-value">70%</span>
+                <span class="stat-label">Q1 Journals</span>
             </div>
         </div>
         
         <div class="legend">
             <h3>Legend:</h3>
-            <p><strong>Full OA:</strong> Fully Open Access journal</p>
-            <p><strong>Hybrid:</strong> Traditional subscription journal with Open Access option</p>
-            <p><strong>APC:</strong> Article Processing Charge (cost to publish Open Access)</p>
+            <div class="legend-grid">
+                <div>
+                    <p><strong>Impact Factor:</strong> Journal Citation Reports (JCR) metric</p>
+                    <p><strong>Cite Score:</strong> Scopus citation metric</p>
+                    <p><strong>Quartiles (Q1-Q4):</strong> Journal ranking within subject category</p>
+                </div>
+                <div>
+                    <p><strong>Full OA:</strong> Fully Open Access journal</p>
+                    <p><strong>Hybrid:</strong> Traditional subscription journal with OA option</p>
+                    <p><strong>APC:</strong> Article Processing Charge (cost to publish Open Access)</p>
+                </div>
+            </div>
         </div>
         
         <div class="table-container">
@@ -250,6 +321,8 @@
                         <th>Journal Title</th>
                         <th>Publisher</th>
                         <th>Impact Factor</th>
+                        <th>Cite Score</th>
+                        <th>Quartile</th>
                         <th>APC (USD)</th>
                         <th>Access Type</th>
                     </tr>
@@ -257,28 +330,23 @@
                 <tbody>
         <tr>
             <td class="journal-title">
-                <a href="https://ajph.aphapublications.org/" target="_blank"> BLANK </a>
+                <a href="https://ajph.aphapublications.org/" target="_blank">American Journal of Public Health</a>
             </td>
-            <td>American Public Health Association</td>
+            <td class="publisher">American Public Health Association</td>
             <td class="impact-factor">9.6</td>
+            <td class="cite-score">8.2</td>
+            <td class="quartile q1">Q1</td>
             <td class="apc paid">$3,500</td>
-            <td class="access-type hybrid">Hybrid</td>
-        </tr>
-        <tr>
-            <td class="journal-title">
-            <a href="https://ajph.aphapublications.org/" target="_blank"> BLANK2 TEST </a>
-            </td>
-            <td>American Public Health Association</td>
-            <td class="impact-factor">9.6</td>
-            <td class="apc free">FREE</td>
             <td class="access-type hybrid">Hybrid</td>
         </tr>
         <tr>
             <td class="journal-title">
                 <a href="https://www.thelancet.com/journals/lanpub/home" target="_blank">The Lancet Public Health</a>
             </td>
-            <td>Elsevier</td>
+            <td class="publisher">Elsevier</td>
             <td class="impact-factor">29.9</td>
+            <td class="cite-score">31.2</td>
+            <td class="quartile q1">Q1</td>
             <td class="apc paid">$5,500</td>
             <td class="access-type hybrid">Hybrid</td>
         </tr>
@@ -286,8 +354,10 @@
             <td class="journal-title">
                 <a href="https://jech.bmj.com/" target="_blank">Journal of Epidemiology and Community Health</a>
             </td>
-            <td>BMJ Publishing Group</td>
+            <td class="publisher">BMJ Publishing Group</td>
             <td class="impact-factor">4.4</td>
+            <td class="cite-score">5.8</td>
+            <td class="quartile q1">Q1</td>
             <td class="apc paid">$3,200</td>
             <td class="access-type hybrid">Hybrid</td>
         </tr>
@@ -295,8 +365,10 @@
             <td class="journal-title">
                 <a href="https://www.sciencedirect.com/journal/social-science-and-medicine" target="_blank">Social Science & Medicine</a>
             </td>
-            <td>Elsevier</td>
+            <td class="publisher">Elsevier</td>
             <td class="impact-factor">4.9</td>
+            <td class="cite-score">6.7</td>
+            <td class="quartile q1">Q1</td>
             <td class="apc paid">$4,200</td>
             <td class="access-type hybrid">Hybrid</td>
         </tr>
@@ -304,8 +376,10 @@
             <td class="journal-title">
                 <a href="https://ehp.niehs.nih.gov/" target="_blank">Environmental Health Perspectives</a>
             </td>
-            <td>National Institute of Environmental Health Sciences</td>
-            <td class="impact-factor">11</td>
+            <td class="publisher">National Institute of Environmental Health Sciences</td>
+            <td class="impact-factor">11.0</td>
+            <td class="cite-score">12.4</td>
+            <td class="quartile q1">Q1</td>
             <td class="apc free">Free</td>
             <td class="access-type full-oa">Full OA</td>
         </tr>
@@ -313,8 +387,10 @@
             <td class="journal-title">
                 <a href="https://www.tandfonline.com/journals/zgha20" target="_blank">Global Health Action</a>
             </td>
-            <td>Taylor & Francis</td>
+            <td class="publisher">Taylor & Francis</td>
             <td class="impact-factor">3.4</td>
+            <td class="cite-score">4.2</td>
+            <td class="quartile q2">Q2</td>
             <td class="apc paid">$1,800</td>
             <td class="access-type full-oa">Full OA</td>
         </tr>
@@ -322,8 +398,10 @@
             <td class="journal-title">
                 <a href="https://www.mdpi.com/journal/ijerph" target="_blank">International Journal of Environmental Research and Public Health</a>
             </td>
-            <td>MDPI</td>
+            <td class="publisher">MDPI</td>
             <td class="impact-factor">4.6</td>
+            <td class="cite-score">5.4</td>
+            <td class="quartile q1">Q1</td>
             <td class="apc paid">$2,900</td>
             <td class="access-type full-oa">Full OA</td>
         </tr>
@@ -331,8 +409,10 @@
             <td class="journal-title">
                 <a href="https://bmcpublichealth.biomedcentral.com/" target="_blank">BMC Public Health</a>
             </td>
-            <td>BioMed Central</td>
+            <td class="publisher">BioMed Central</td>
             <td class="impact-factor">3.3</td>
+            <td class="cite-score">4.1</td>
+            <td class="quartile q2">Q2</td>
             <td class="apc paid">$2,770</td>
             <td class="access-type full-oa">Full OA</td>
         </tr>
@@ -340,8 +420,10 @@
             <td class="journal-title">
                 <a href="https://academic.oup.com/heapol" target="_blank">Health Policy and Planning</a>
             </td>
-            <td>Oxford University Press</td>
+            <td class="publisher">Oxford University Press</td>
             <td class="impact-factor">2.9</td>
+            <td class="cite-score">3.8</td>
+            <td class="quartile q2">Q2</td>
             <td class="apc paid">$3,800</td>
             <td class="access-type hybrid">Hybrid</td>
         </tr>
@@ -349,8 +431,10 @@
             <td class="journal-title">
                 <a href="https://link.springer.com/journal/41271" target="_blank">Journal of Public Health Policy</a>
             </td>
-            <td>Palgrave Macmillan</td>
+            <td class="publisher">Palgrave Macmillan</td>
             <td class="impact-factor">2.4</td>
+            <td class="cite-score">3.1</td>
+            <td class="quartile q3">Q3</td>
             <td class="apc paid">$3,900</td>
             <td class="access-type hybrid">Hybrid</td>
         </tr>
@@ -359,14 +443,9 @@
         </div>
         
         <div class="footer">
-            <p>Data compiled from journal websites and publisher information | Last updated: September 21, 2025</p>
-            <p>Impact factors are approximate and may vary by year | APC costs may vary based on institution and membership discounts</p>
+            <p>Data compiled from journal websites, JCR, and Scopus | Last updated: September 27, 2025</p>
+            <p>Impact factors and Cite Scores are approximate and may vary by year | APC costs may vary based on institution and membership discounts</p>
         </div>
     </div>
 </body>
 </html>
-
-
-
-
-
